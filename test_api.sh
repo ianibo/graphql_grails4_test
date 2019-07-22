@@ -43,7 +43,7 @@ curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
      -d $'
 {
-  widgetQuery(name:"Test%") {
+  widgetQuery(name:"Test%", max:100) {
     totalCount
     results {
       id

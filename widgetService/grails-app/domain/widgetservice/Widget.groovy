@@ -13,6 +13,7 @@ class Widget {
 
   static graphql = GraphQLMapping.lazy {
     query('widgetQuery', pagedResult(Widget)) {
+      defaultListArguments()
       argument('name', String)
       // Ultimately send back a grails.gorm.PagedResultList
       dataFetcher(new PaginatedEntityDataFetcher<List<Widget>>(Widget.gormPersistentEntity) {
