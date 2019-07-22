@@ -15,7 +15,7 @@ class Widget {
     query('widgetQuery', pagedResult(Widget)) {
       argument('name', String)
       // Ultimately send back a grails.gorm.PagedResultList
-      dataFetcher(new PaginatedEntityDataFetcher<Widget>(Widget.gormPersistentEntity) {
+      dataFetcher(new PaginatedEntityDataFetcher<List<Widget>>(Widget.gormPersistentEntity) {
         @Override
         protected DetachedCriteria buildCriteria(DataFetchingEnvironment environment) {
           // .where creates a detached criteria - see info here:
