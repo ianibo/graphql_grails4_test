@@ -63,6 +63,8 @@ dependencies {
     testCompile "org.mockito:mockito-core"
     testCompile "io.micronaut:micronaut-http-client"
     testCompile "org.grails:grails-web-testing-support"
+
+    compile "org.grails.plugins:gorm-graphql:1.0.3.BUILD-SNAPSHOT"
 }
 
 bootRun {
