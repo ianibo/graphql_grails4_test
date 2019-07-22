@@ -37,4 +37,15 @@ curl -X "POST" "http://localhost:8080/graphql" \
   }
 }'
 
+echo Test custom query
+
+curl -X "POST" "http://localhost:8080/graphql" \
+     -H "Content-Type: application/graphql" \
+     -d $'
+{
+  widgetQuery(name:"Test%", max: 100) {
+    resultList
+    totalCount
+  }
+}'
 
