@@ -2,17 +2,27 @@
 
 # echo -e "\n\nTry with variables -- can't get this working at the moment"
 #
-# curl -X "POST" "http://localhost:8080/graphql" \
-#      -H "Content-Type: application/json" \
-#      -d $'{
-#   "query" : "mutation { widgetCreate(widget: $vw) { id name description errors { field message } } }",
-#   "variables": {
-#     "vw" : { "name": "AATestWidget", "description": "AATestWidget Description" }
-#   }
-# }
-# '
+curl -X "POST" "http://localhost:8080/graphql" \
+     -H "Content-Type: application/json" \
+     -d $'{
+  "query" : "mutation($vw WidgetCreate!) { widgetCreate(widget: $vw) { id name description errors { field message } } }",
+  "variables": {
+    "vw" : { "name": "AATestWidget", "description": "AATestWidget Description" }
+  }
+}
+'
 
+echo -e "\n\nIntrospect types"
 
+curl -X "POST" "http://localhost:8080/graphql" \
+     -H "Content-Type: application/graphql" \
+     -d $'{
+  __schema {
+    types {
+      name
+    }
+  }
+}'
 
 echo -e "\n\nTry to send well formed JSON as the mutation parameter"
 
