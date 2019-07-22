@@ -2,7 +2,7 @@
 
 
 
-echo Try to send well formed JSON as the mutation parameter
+echo -e "\n\nTry to send well formed JSON as the mutation parameter"
 
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
@@ -23,7 +23,8 @@ mutation {
 }
 '
 
-echo Working version
+
+echo -e "\n\nWorking version"
 
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
@@ -45,7 +46,7 @@ mutation {
 '
 
 
-echo Search refdata
+echo -e "\n\nList widgets"
 
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
@@ -62,7 +63,7 @@ curl -X "POST" "http://localhost:8080/graphql" \
   }
 }'
 
-echo Test custom query
+echo -e "\n\nTest custom query"
 
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
