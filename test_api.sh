@@ -1,13 +1,16 @@
 #!/bin/bash
 
 
+
+echo Try to send well formed JSON as the mutation parameter
+
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
      -d $'
 mutation {
   widgetCreate(widget: {
-    name:"AATestWidget",
-    description:"AATestWidget Description"
+    "name": "AATestWidget",
+    "description": "AATestWidget Description"
   }) {
     id
     name
@@ -19,6 +22,8 @@ mutation {
   }
 }
 '
+
+echo Working version
 
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/graphql" \
