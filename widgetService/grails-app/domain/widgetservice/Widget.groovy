@@ -14,14 +14,18 @@ class Widget {
   static graphql = GraphQLMapping.lazy {
     query('widgetQuery', pagedResult(Widget)) {
       defaultListArguments()
-      argument('name', String)
+      argument('name', String) {
+        nullable false
+        description "Left anchored name to search for"
+      }
       // Ultimately send back a grails.gorm.PagedResultList
       dataFetcher(new PaginatedEntityDataFetcher<List<Widget>>(Widget.gormPersistentEntity) {
         @Override
         protected DetachedCriteria buildCriteria(DataFetchingEnvironment environment) {
+          println("widgetQuery : ${environment}\n\n");
           // .where creates a detached criteria - see info here:
           // http://gorm.grails.org/6.0.x/hibernate/manual/index.html#whereQueries
-          Widget.where { name =~ environment.getArgument('name')?:'%' }
+          Widget.where { name =~ environment.getArgument('name') }
         }
       })
     }
