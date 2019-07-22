@@ -5,7 +5,7 @@
 curl -X "POST" "http://localhost:8080/graphql" \
      -H "Content-Type: application/json" \
      -d $'{
-  "query" : "mutation($vw WidgetCreate!) { widgetCreate(widget: $vw) { id name description errors { field message } } }",
+  "query" : "mutation($vw: WidgetCreate) { widgetCreate(widget: $vw) { id name description errors { field message } } }",
   "variables": {
     "vw" : { "name": "AATestWidget", "description": "AATestWidget Description" }
   }
